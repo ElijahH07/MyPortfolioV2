@@ -53,7 +53,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${switzerBlack.variable} ${switzerReg.variable} antialiased`}>
+      <body className={`${switzerBlack.variable} ${switzerReg.variable} antialiased background-black`}>
         {children}
       </body>
     </html>
