@@ -10,6 +10,7 @@ import {useState, useEffect} from "react";
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import Footer from "@/components/footer"
+import Navigation from '@/components/navigation';
 
 const techLogos = [
   { node: <span className="text-white"><SiReact /></span>, title: "React", href: "https://react.dev" },
@@ -79,32 +80,9 @@ export default function Home() {
               width: '100%',
               padding: '0 40px'
             }}>
-
-              {/* Left side - Navigation links */}
-              <BrowserView>
-                <nav style={{ display: 'flex', gap: '32px' }}>
-                  <a href="/" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
-                    Home
-                  </a>
-                  <a href="/projects" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
-                    Projects
-                  </a>
-                </nav>
-              </BrowserView>
-
-              
-              <div style={{display: 'flex'}}> 
-                <IconButton 
-                  icon={<Github size={24} />}
-                  href="https://github.com/ElijahH07"
-                  label="GitHub Profile"
-                />
-                <IconButton 
-                  icon={<Linkedin size={24} />}
-                  href="https://linkedin.com/in/elijahchargreaves"
-                  label="LinkedIn Profile"
-                />
-              </div>
+            
+            {/* Nav Bar */}
+            <Navigation></Navigation>
             </div>
           </GlassSurface>
         </div>
@@ -130,24 +108,31 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative mt-6 flex flex justify-center">
-          <a target="_blank" href="https://flowcv.com/resume/k9rrshmuvuso" className="mr-4 bg-white rounded-[40px] px-12 py-3 text-lg font-semibold text-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer">
-              <h1 className="text-1xl md:text-2xl font-reg text-black text-center">Resume</h1>
+        <div className="relative mt-6 flex justify-center gap-4">
+          <a 
+            target="_blank" 
+            href="https://flowcv.com/resume/k9rrshmuvuso" 
+            className="flex items-center justify-center bg-white rounded-[40px] min-w-[200px] h-[55px] px-6 text-lg font-semibold text-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer"
+          >
+            <span className="text-lg md:text-xl font-reg text-black whitespace-nowrap">Resume</span>
           </a>
+          
           <GlassSurface 
             width="200px"
             height={55}
             borderRadius={40}
             opacity={0.8}
-            className="nav-bar shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer"
-            backgroundOpacity={.5}
+            className="flex items-center justify-center nav-bar shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer px-6"
+            backgroundOpacity={0.5}
             distortionScale={140}
             blur={20}
           >
-
-            <h1 onClick={scrollToNextSection} className="text-1xl md:text-2xl font-reg text-white text-center leading-tight">
+            <span 
+              onClick={scrollToNextSection} 
+              className="text-lg md:text-xl font-reg text-white whitespace-nowrap"
+            >
               About Me
-            </h1>
+            </span>
           </GlassSurface>
         </div>
       </div>

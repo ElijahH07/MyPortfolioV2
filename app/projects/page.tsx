@@ -5,6 +5,7 @@ import { BrowserView, MobileView } from "react-device-detect";
 import GlassSurface from "@/components/glasssurface";
 import IconButton from "@/components/iconButton";
 import { ChevronDown, Github, Linkedin } from 'lucide-react';
+import Navigation from "@/components/navigation";
 
 export default function Home({
   children,
@@ -13,6 +14,7 @@ export default function Home({
 }>) {
   return (
         <>
+            {/* background */}
             <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             <Beams
                 beamWidth={3}
@@ -26,7 +28,7 @@ export default function Home({
             />
             </div>
 
-            {/* Foreground - Navigation */}
+            {/* Foreground - navbar */}
             <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'center', padding: '50px 0'  }}>
             <GlassSurface 
                 width="45%"
@@ -47,28 +49,8 @@ export default function Home({
                 padding: '0 40px'
                 }}>
 
-                {/* Left side - Navigation links */}
-                <nav style={{ display: 'flex', gap: '32px' }}>
-                    <a href="/" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
-                    Home
-                    </a>
-                    <a href="/projects" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
-                    Projects
-                    </a>
-                </nav>
-                
-                <div style={{display: 'flex'}}> 
-                    <IconButton 
-                    icon={<Github size={24} />}
-                    href="https://github.com/ElijahH07"
-                    label="GitHub Profile"
-                    />
-                    <IconButton 
-                    icon={<Linkedin size={24} />}
-                    href="https://linkedin.com/in/elijahchargreaves"
-                    label="LinkedIn Profile"
-                    />
-                </div>
+                    {/* Nav Bar */}
+                    <Navigation></Navigation>
                 </div>
             </GlassSurface>
             </div>
