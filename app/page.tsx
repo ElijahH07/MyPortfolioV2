@@ -9,6 +9,7 @@ import { ChevronDown, Github, Linkedin } from 'lucide-react';
 import {useState, useEffect} from "react";
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import Footer from "@/components/footer"
 
 const techLogos = [
   { node: <span className="text-white"><SiReact /></span>, title: "React", href: "https://react.dev" },
@@ -17,12 +18,6 @@ const techLogos = [
   { node: <span className="text-white"><SiTailwindcss /></span>, title: "Tailwind CSS", href: "https://tailwindcss.com" },
 ];
 
-// Alternative with image sources
-const imageLogos = [
-  { src: "/logos/company1.png", alt: "Company 1", href: "https://company1.com" },
-  { src: "/logos/company2.png", alt: "Company 2", href: "https://company2.com" },
-  { src: "/logos/company3.png", alt: "Company 3", href: "https://company3.com" },
-];
 
 export default function Home() {
 
@@ -45,6 +40,7 @@ export default function Home() {
     const nextSection = document.getElementById('next-section');
     nextSection?.scrollIntoView({ behavior: 'smooth' });
   };
+
   return (
     <>
       {/* main header */}
@@ -85,14 +81,17 @@ export default function Home() {
             }}>
 
               {/* Left side - Navigation links */}
-              <nav style={{ display: 'flex', gap: '32px' }}>
-                <a href="/" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
-                  Home
-                </a>
-                <a href="/projects" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
-                  Projects
-                </a>
-              </nav>
+              <BrowserView>
+                <nav style={{ display: 'flex', gap: '32px' }}>
+                  <a href="/" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
+                    Home
+                  </a>
+                  <a href="/projects" className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-opacity">
+                    Projects
+                  </a>
+                </nav>
+              </BrowserView>
+
               
               <div style={{display: 'flex'}}> 
                 <IconButton 
@@ -145,7 +144,8 @@ export default function Home() {
             distortionScale={140}
             blur={20}
           >
-            <h1 className="text-1xl md:text-2xl font-reg text-white text-center leading-tight">
+
+            <h1 onClick={scrollToNextSection} className="text-1xl md:text-2xl font-reg text-white text-center leading-tight">
               About Me
             </h1>
           </GlassSurface>
@@ -155,11 +155,11 @@ export default function Home() {
       {/* About me / Skills section*/}
         <div 
           id="next-section"
-          className={`max-w-[50%] flex flex-col items-center justify-center min-h-screen transition-opacity duration-1000 overflow-hidden ${
+          className={`center-div max-w-[50%] flex flex-col items-center justify-center min-h-screen transition-opacity duration-1000 overflow-hidden ${
             scrolled ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="relative z-10 mx-auto  px-6">
+          <div className="relative px-6">
             <h2 className="text-4xl font-switzer-black text-white mb-3 mt-4">About Me</h2>
             <div className="w-50 h-1 bg-gradient-to-r from-white to-black mb-8"></div>
             <p className="text-xl text-gray-300 font-switzer-reg leading-relaxed ">
@@ -174,25 +174,13 @@ export default function Home() {
                 My Skills
               </span>
             </h2>
-            <div className="w-50 h-1 bg-gradient-to-r from-white to-black mb-8 mt-3"></div>
-          </div>
-
-          <div className="z-10 mt-8" style={{ height: '200px', position: 'relative', overflow: 'hidden'}}>
-            {/* Basic horizontal loop */}
-            <LogoLoop
-              logos={techLogos}
-              speed={120}
-              direction="left"
-              logoHeight={48}
-              gap={40}
-              hoverSpeed={20}
-              scaleOnHover
-              fadeOut
-              fadeOutColor="#0000"
-              ariaLabel="Technology partners"
-            />
+            <div className="w-50 h-1 bg-gradient-to-r from-white to-black mb-6 mt-3"></div>
+              <p className="text-xl text-gray-300 font-switzer-reg leading-relaxed ">
+              Also coming soon
+              </p>
           </div>
         </div>
+        <Footer onAboutClick={scrollToNextSection}></Footer>
     </>
   );
 }
