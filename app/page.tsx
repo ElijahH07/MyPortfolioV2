@@ -158,15 +158,17 @@ export default function Home() {
       </div>
 
       {/* About me / Skills section*/}
-        <div 
+        <div
           id="next-section"
-          className={`center-div max-w-[50%] flex flex-col items-center justify-center min-h-screen transition-opacity duration-1000 overflow-hidden ${
+          className={`center-div max-w-[50%] flex flex-col items-center justify-center min-h-screen pb-24 transition-opacity duration-1000 overflow-hidden ${
             scrolled ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <div className="relative px-6">
-            <h2 className="text-4xl font-switzer-black text-white mb-3 mt-4">About Me</h2>
-            <div className="w-50 h-1 bg-gradient-to-r from-white to-black mb-8"></div>
+            <div className="flex items-center gap-4 mb-8 mt-4">
+              <h2 className="text-4xl font-switzer-black text-white whitespace-nowrap">About Me</h2>
+              <div className="flex-1 h-px bg-white/10" />
+            </div>
             <p className="text-xl text-gray-300 font-switzer-reg leading-relaxed">
               Hello. I&apos;m <span className="text-white font-switzer-black">Elijah</span>, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.
               <br /><br />
@@ -180,10 +182,10 @@ export default function Home() {
 
             <div className="section-divider my-16"></div>
 
-            <h2 className="text-4xl font-switzer-black">
-              <span className="text-white">My Skills</span>
-            </h2>
-            <div className="w-50 h-1 bg-gradient-to-r from-white to-black mb-6 mt-3"></div>
+            <div className="flex items-center gap-4 mb-6">
+              <h2 className="text-4xl font-switzer-black text-white whitespace-nowrap">My Skills</h2>
+              <div className="flex-1 h-px bg-white/10" />
+            </div>
 
             {/* Filter tabs */}
             <div className="flex flex-wrap gap-2 mb-6">
