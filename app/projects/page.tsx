@@ -64,12 +64,17 @@ export default function ProjectsPage() {
 
           {/* Heading */}
           <BrowserView>
-            <h1 className="text-5xl font-switzer-black text-white mb-3">Projects</h1>
+            <div className="flex items-center gap-4 mb-12">
+              <h1 className="text-5xl font-switzer-black text-white whitespace-nowrap">Projects</h1>
+              <div className="flex-1 h-px bg-white/10" />
+            </div>
           </BrowserView>
           <MobileView>
-            <h1 className="text-4xl font-switzer-black text-white mb-3">Projects</h1>
+            <div className="flex items-center gap-4 mb-12">
+              <h1 className="text-4xl font-switzer-black text-white whitespace-nowrap">Projects</h1>
+              <div className="flex-1 h-px bg-white/10" />
+            </div>
           </MobileView>
-          <div className="w-40 h-1 bg-gradient-to-r from-white to-transparent mb-12" />
 
           {/* Featured project card */}
           <div
