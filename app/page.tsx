@@ -8,7 +8,8 @@ import IconButton from '@/components/iconButton';
 import { ChevronDown, Github, Linkedin } from 'lucide-react';
 import {useState, useEffect} from "react";
 import LogoLoop from '@/components/LogoLoop';
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import { SiPython, SiCplusplus, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss, SiGit, SiGithub, SiLatex } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
 import Footer from "@/components/footer"
 import Navigation from '@/components/navigation';
 
@@ -23,6 +24,25 @@ const techLogos = [
 export default function Home() {
 
   const [scrolled, setScrolled] = useState(false);
+  const [activeSkillTab, setActiveSkillTab] = useState<'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'>('all');
+
+  type Skill = { name: string; icon?: React.ReactNode; category: 'languages' | 'frameworks' | 'tools' | 'concepts' };
+
+  const skills: Skill[] = [
+    { name: 'Python', icon: <SiPython />, category: 'languages' },
+    { name: 'C++', icon: <SiCplusplus />, category: 'languages' },
+    { name: 'JavaScript', icon: <SiJavascript />, category: 'languages' },
+    { name: 'TypeScript', icon: <SiTypescript />, category: 'languages' },
+    { name: 'MATLAB', category: 'languages' },
+    { name: 'Java', icon: <FaJava />, category: 'languages' },
+    { name: 'React', icon: <SiReact />, category: 'frameworks' },
+    { name: 'Next.js', icon: <SiNextdotjs />, category: 'frameworks' },
+    { name: 'Tailwind CSS', icon: <SiTailwindcss />, category: 'frameworks' },
+    { name: 'Git', icon: <SiGit />, category: 'tools' },
+    { name: 'GitHub', icon: <SiGithub />, category: 'tools' },
+    { name: 'LaTeX', icon: <SiLatex />, category: 'tools' },
+    { name: 'Object-Oriented Programming', category: 'concepts' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -160,15 +180,44 @@ export default function Home() {
 
             <div className="section-divider my-16"></div>
 
-            <h2 className="text-4xl font-switzer-black ">
-              <span className="text-white ">
-                My Skills
-              </span>
+            <h2 className="text-4xl font-switzer-black">
+              <span className="text-white">My Skills</span>
             </h2>
             <div className="w-50 h-1 bg-gradient-to-r from-white to-black mb-6 mt-3"></div>
-              <p className="text-xl text-gray-300 font-switzer-reg leading-relaxed ">
-              Also coming soon
-              </p>
+
+            {/* Filter tabs */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {(['all', 'languages', 'frameworks', 'tools', 'concepts'] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveSkillTab(tab)}
+                  className={`px-4 py-1.5 rounded-full text-sm font-switzer-black capitalize transition-all duration-200 ${
+                    activeSkillTab === tab
+                      ? 'bg-white text-black'
+                      : 'bg-white/5 text-white/60 border border-white/15 hover:bg-white/10 hover:text-white/80'
+                  }`}
+                >
+                  {tab === 'all' ? 'All' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
+
+            {/* Skill pills */}
+            <div className="flex flex-wrap gap-3">
+              {skills
+                .filter((s) => activeSkillTab === 'all' || s.category === activeSkillTab)
+                .map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-white/80 font-switzer-reg text-sm hover:bg-white/10 hover:border-white/30 hover:text-white transition-all duration-200"
+                  >
+                    {skill.icon && (
+                      <span className="text-base leading-none">{skill.icon}</span>
+                    )}
+                    {skill.name}
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
         <Footer onAboutClick={scrollToNextSection}></Footer>
