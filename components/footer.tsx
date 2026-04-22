@@ -12,7 +12,8 @@ const Footer: React.FC<FooterProps> = ({ onAboutClick }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black border-t border-gray-800">
+    <footer className="bg-[#0a0a0a] border-t border-white/10 relative">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           
@@ -67,11 +68,11 @@ const Footer: React.FC<FooterProps> = ({ onAboutClick }) => {
           {/* Source Code */}
           <div>
             <h3 className="text-white font-bold text-lg mb-4 font-switzer-black">This Website</h3>
-            <a 
+            <a
               href="https://github.com/ElijahH07/my-portfolio"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all border border-gray-800 hover:border-gray-700 group"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-all border border-white/10 hover:border-white/20 group"
             >
               <Github size={20} className="group-hover:rotate-12 transition-transform" />
               <div className="text-left">
@@ -86,7 +87,7 @@ const Footer: React.FC<FooterProps> = ({ onAboutClick }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-900">
+        <div className="pt-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-switzer-reg text-gray-500 text-sm flex items-center gap-2">
               © {currentYear} Elijah Hargreaves 
