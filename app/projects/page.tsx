@@ -11,7 +11,7 @@ const tellurisProject = {
   title: "Telluris Landing Simulation",
   org: "Gaucho Rocket Project",
   description:
-    "A 6-degrees-of-freedom rocket landing trajectory and control simulation built in MATLAB and Simulink. Models the aerodynamic forces, thrust vectoring, and guidance algorithms needed to simulate a propulsive vertical landing — similar in scope to SpaceX Falcon 9 booster recovery.",
+    "A rocket landing trajectory and control simulation built in MATLAB and Simulink. Models when to start our second stage hard-fuel engine for vertical landing.",
   tags: ["MATLAB", "Simulink", "Control Systems", "Physics", "6-DOF"],
   github: "https://github.com/Gaucho-Rocket-Project/TellurisLandingSimulation",
 };

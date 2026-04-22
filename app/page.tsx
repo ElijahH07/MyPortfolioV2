@@ -172,7 +172,7 @@ export default function Home() {
             <p className="text-xl text-gray-300 font-switzer-reg leading-relaxed">
               Hello. I&apos;m <span className="text-white font-switzer-black">Elijah</span>, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.
               <br /><br />
-              I love working on embedded systems, simulations, and web applications — whether that&apos;s writing firmware for a sensor board, modeling rocket dynamics in MATLAB, or shipping a clean UI in React.
+              I love working on embedded systems, simulations, and web applications, whether that&apos;s writing firmware for a sensor board, modeling rocket dynamics in MATLAB, or creating a clean UI in React.
               <br /><br />
               Feel free to reach out at{' '}
               <a href="mailto:ehargreaves@ucsb.edu" className="text-white underline underline-offset-4 hover:opacity-80 transition-opacity">
