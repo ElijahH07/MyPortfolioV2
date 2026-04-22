@@ -191,6 +191,7 @@ export default function Home() {
                 <button
                   key={tab}
                   onClick={() => setActiveSkillTab(tab)}
+                  aria-pressed={activeSkillTab === tab}
                   className={`px-4 py-1.5 rounded-full text-sm font-switzer-black capitalize transition-all duration-200 ${
                     activeSkillTab === tab
                       ? 'bg-white text-black'
