@@ -58,6 +58,10 @@ export default function Home() {
   const [activeSkillTab, setActiveSkillTab] = useState<'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'>('all');
   const spotlightRef = useRef<HTMLDivElement>(null);
   const [bioComplete, setBioComplete] = useState(false);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const [aboutVisible, setAboutVisible] = useState(false);
+  const [skillsVisible, setSkillsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,6 +83,21 @@ export default function Home() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === aboutRef.current && entry.isIntersecting) setAboutVisible(true)
+          if (entry.target === skillsRef.current && entry.isIntersecting) setSkillsVisible(true)
+        })
+      },
+      { threshold: 0.1 }
+    )
+    if (aboutRef.current) observer.observe(aboutRef.current)
+    if (skillsRef.current) observer.observe(skillsRef.current)
+    return () => observer.disconnect()
   }, []);
 
   const scrollToNextSection = () => {
@@ -203,14 +222,14 @@ export default function Home() {
       {/* About Me + Skills section */}
       <main
         id="next-section"
-        className={`relative z-10 flex-1 flex flex-col items-start px-8 pt-16 pb-24 transition-opacity duration-1000 ${
-          scrolled ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="relative z-10 flex-1 flex flex-col items-start px-8 pt-16 pb-24"
       >
         <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
 
           {/* About Me terminal card */}
           <div
+            ref={aboutRef}
+            className={`transition-all duration-700 ${aboutVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.12)",
@@ -255,6 +274,8 @@ export default function Home() {
 
           {/* Skills terminal card */}
           <div
+            ref={skillsRef}
+            className={`transition-all duration-700 delay-150 ${skillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.12)",
