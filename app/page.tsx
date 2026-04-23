@@ -13,43 +13,51 @@ import { FaJava } from 'react-icons/fa';
 import Footer from "@/components/footer"
 import Navigation from '@/components/navigation';
 
-export default function Home() {
-  const techLogos = [
-    { node: <span className="text-white/40 text-xl"><SiPython /></span>, title: "Python" },
-    { node: <span className="text-white/40 text-xl"><SiCplusplus /></span>, title: "C++" },
-    { node: <span className="text-white/40 text-xl"><SiJavascript /></span>, title: "JavaScript" },
-    { node: <span className="text-white/40 text-xl"><SiTypescript /></span>, title: "TypeScript" },
-    { node: <span className="text-white/40 text-xl"><SiReact /></span>, title: "React" },
-    { node: <span className="text-white/40 text-xl"><SiNextdotjs /></span>, title: "Next.js" },
-    { node: <span className="text-white/40 text-xl"><SiTailwindcss /></span>, title: "Tailwind CSS" },
-    { node: <span className="text-white/40 text-xl"><SiGit /></span>, title: "Git" },
-    { node: <span className="text-white/40 text-xl"><SiGithub /></span>, title: "GitHub" },
-    { node: <span className="text-white/40 text-xl"><SiLatex /></span>, title: "LaTeX" },
-    { node: <span className="text-white/40 text-xl"><FaJava /></span>, title: "Java" },
-  ];
+type Skill = { name: string; icon?: React.ReactNode; category: 'languages' | 'frameworks' | 'tools' | 'concepts' };
 
+const skills: Skill[] = [
+  { name: 'Python', icon: <SiPython />, category: 'languages' },
+  { name: 'C++', icon: <SiCplusplus />, category: 'languages' },
+  { name: 'JavaScript', icon: <SiJavascript />, category: 'languages' },
+  { name: 'TypeScript', icon: <SiTypescript />, category: 'languages' },
+  { name: 'MATLAB', category: 'languages' },
+  { name: 'Java', icon: <FaJava />, category: 'languages' },
+  { name: 'React', icon: <SiReact />, category: 'frameworks' },
+  { name: 'Next.js', icon: <SiNextdotjs />, category: 'frameworks' },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss />, category: 'frameworks' },
+  { name: 'Git', icon: <SiGit />, category: 'tools' },
+  { name: 'GitHub', icon: <SiGithub />, category: 'tools' },
+  { name: 'LaTeX', icon: <SiLatex />, category: 'tools' },
+  { name: 'Object-Oriented Programming', category: 'concepts' },
+];
+
+const techLogos = [
+  { node: <span className="text-white/40 text-xl"><SiPython /></span>, title: "Python" },
+  { node: <span className="text-white/40 text-xl"><SiCplusplus /></span>, title: "C++" },
+  { node: <span className="text-white/40 text-xl"><SiJavascript /></span>, title: "JavaScript" },
+  { node: <span className="text-white/40 text-xl"><SiTypescript /></span>, title: "TypeScript" },
+  { node: <span className="text-white/40 text-xl"><SiReact /></span>, title: "React" },
+  { node: <span className="text-white/40 text-xl"><SiNextdotjs /></span>, title: "Next.js" },
+  { node: <span className="text-white/40 text-xl"><SiTailwindcss /></span>, title: "Tailwind CSS" },
+  { node: <span className="text-white/40 text-xl"><SiGit /></span>, title: "Git" },
+  { node: <span className="text-white/40 text-xl"><SiGithub /></span>, title: "GitHub" },
+  { node: <span className="text-white/40 text-xl"><SiLatex /></span>, title: "LaTeX" },
+  { node: <span className="text-white/40 text-xl"><FaJava /></span>, title: "Java" },
+];
+
+const SKILL_TABS: { id: 'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'; label: string }[] = [
+  { id: 'all',        label: '--all' },
+  { id: 'languages',  label: '--languages' },
+  { id: 'frameworks', label: '--frameworks' },
+  { id: 'tools',      label: '--tools' },
+  { id: 'concepts',   label: '--concepts' },
+];
+
+export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSkillTab, setActiveSkillTab] = useState<'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'>('all');
   const spotlightRef = useRef<HTMLDivElement>(null);
   const [bioComplete, setBioComplete] = useState(false);
-
-  type Skill = { name: string; icon?: React.ReactNode; category: 'languages' | 'frameworks' | 'tools' | 'concepts' };
-
-  const skills: Skill[] = [
-    { name: 'Python', icon: <SiPython />, category: 'languages' },
-    { name: 'C++', icon: <SiCplusplus />, category: 'languages' },
-    { name: 'JavaScript', icon: <SiJavascript />, category: 'languages' },
-    { name: 'TypeScript', icon: <SiTypescript />, category: 'languages' },
-    { name: 'MATLAB', category: 'languages' },
-    { name: 'Java', icon: <FaJava />, category: 'languages' },
-    { name: 'React', icon: <SiReact />, category: 'frameworks' },
-    { name: 'Next.js', icon: <SiNextdotjs />, category: 'frameworks' },
-    { name: 'Tailwind CSS', icon: <SiTailwindcss />, category: 'frameworks' },
-    { name: 'Git', icon: <SiGit />, category: 'tools' },
-    { name: 'GitHub', icon: <SiGithub />, category: 'tools' },
-    { name: 'LaTeX', icon: <SiLatex />, category: 'tools' },
-    { name: 'Object-Oriented Programming', category: 'concepts' },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -267,16 +275,10 @@ export default function Home() {
               {/* Command line row */}
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className="text-sm text-white/30">$ ls skills/</span>
-                {[
-                  { id: 'all', label: '--all' },
-                  { id: 'languages', label: '--languages' },
-                  { id: 'frameworks', label: '--frameworks' },
-                  { id: 'tools', label: '--tools' },
-                  { id: 'concepts', label: '--concepts' },
-                ].map(({ id, label }) => (
+                {SKILL_TABS.map(({ id, label }) => (
                   <button
                     key={id}
-                    onClick={() => setActiveSkillTab(id as typeof activeSkillTab)}
+                    onClick={() => setActiveSkillTab(id)}
                     aria-pressed={activeSkillTab === id}
                     className={`font-mono text-xs px-2 py-0.5 rounded border transition-all ${
                       activeSkillTab === id
