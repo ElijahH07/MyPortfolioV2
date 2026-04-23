@@ -80,18 +80,6 @@ export default function ProjectsPage() {
         <div className="w-full max-w-2xl">
 
           {/* Heading */}
-          <BrowserView>
-            <div className="flex items-center gap-4 mb-12">
-              <h1 className="text-5xl font-switzer-black text-white whitespace-nowrap">Projects</h1>
-              <div className="flex-1 h-px bg-white/10" />
-            </div>
-          </BrowserView>
-          <MobileView>
-            <div className="flex items-center gap-4 mb-12">
-              <h1 className="text-4xl font-switzer-black text-white whitespace-nowrap">Projects</h1>
-              <div className="flex-1 h-px bg-white/10" />
-            </div>
-          </MobileView>
 
           {/* Featured project card */}
           <div
