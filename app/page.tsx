@@ -2,7 +2,6 @@
 import Beams from '@/components/beams';
 import GlassSurface from '@/components/glasssurface';
 import TypingText from '@/components/typing-text';
-import { BrowserView, MobileView } from "react-device-detect";
 import {useState, useEffect, useRef} from "react";
 import LogoLoop from '@/components/LogoLoop';
 import { SiPython, SiCplusplus, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss, SiGit, SiGithub, SiLatex } from 'react-icons/si';
@@ -124,80 +123,67 @@ export default function Home() {
       </div>
 
       {/* Hero section */}
-      <div style={{ width: '100%', height: '800px', position: 'relative', zIndex: 1 }} className={`transition-opacity duration-1000 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`w-full min-h-screen md:h-[800px] relative z-10 transition-opacity duration-1000 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
         {/* Navigation */}
-        <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'center', padding: '50px 0' }}>
-          <GlassSurface
-            width="45%"
-            height={70}
-            borderRadius={40}
-            opacity={0.8}
-            className="nav-bar"
-            backgroundOpacity={.5}
-            distortionScale={140}
-            blur={20}
-          >
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              height: '100%',
-              width: '100%',
-              padding: '0 40px'
-            }}>
-              <Navigation></Navigation>
-            </div>
-          </GlassSurface>
+        <div className="relative z-10 flex justify-center px-4 pt-10 md:pt-[50px]">
+          <div className="w-full max-w-[92%] md:max-w-[45%]">
+            <GlassSurface
+              width="100%"
+              height={70}
+              borderRadius={40}
+              opacity={0.8}
+              className="nav-bar"
+              backgroundOpacity={.5}
+              distortionScale={140}
+              blur={20}
+            >
+              <div className="flex justify-between items-center h-full w-full px-5 md:px-10">
+                <Navigation />
+              </div>
+            </GlassSurface>
+          </div>
         </div>
 
-        {/* Name + subtitle + buttons — vertically centered block */}
-        <div className="relative mt-24 flex flex-col items-center gap-6">
-          <div className="flex flex-col items-center gap-3">
-            <BrowserView>
-              <h1 className="text-6xl md:text-8xl font-black text-white">
-                Elijah Hargreaves
-              </h1>
-            </BrowserView>
-            <MobileView>
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white text-center leading-tight">
-                Elijah<br />Hargreaves
-              </h1>
-            </MobileView>
+        {/* Name + subtitle + buttons */}
+        <div className="relative mt-14 md:mt-24 flex flex-col items-center gap-6 px-4">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-tight">
+              Elijah Hargreaves
+            </h1>
             <TypingText
               text="Computer Engineer @ UCSB"
-              className="text-2xl md:text-3xl font-reg bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-gray-500"
+              className="text-xl md:text-3xl font-reg bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-gray-500"
               grow={true}
               repeat={false}
               hideCursorOnComplete={true}
             />
           </div>
 
-          <div className="flex justify-center gap-4">
-          <a
-            target="_blank"
-            href="https://flowcv.com/resume/k9rrshmuvuso"
-            className="flex items-center justify-center bg-white rounded-[40px] min-w-[200px] h-[55px] px-6 text-lg font-semibold text-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer"
-          >
-            <span className="text-lg md:text-xl font-reg text-black whitespace-nowrap">Resume</span>
-          </a>
-
-          <GlassSurface
-            width="200px"
-            height={55}
-            borderRadius={40}
-            opacity={0.8}
-            className="flex items-center justify-center nav-bar shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer px-6"
-            backgroundOpacity={0.5}
-            distortionScale={140}
-            blur={20}
-          >
-            <span
-              onClick={scrollToNextSection}
-              className="text-lg md:text-xl font-reg text-white whitespace-nowrap"
+          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-xs sm:max-w-none">
+            <a
+              target="_blank"
+              href="https://flowcv.com/resume/k9rrshmuvuso"
+              className="flex items-center justify-center bg-white rounded-[40px] h-[52px] px-8 font-semibold text-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer"
             >
-              About Me
-            </span>
-          </GlassSurface>
+              <span className="text-base md:text-lg font-reg text-black whitespace-nowrap">Resume</span>
+            </a>
+
+            <button onClick={scrollToNextSection} className="cursor-pointer">
+              <GlassSurface
+                width="100%"
+                height={52}
+                borderRadius={40}
+                opacity={0.8}
+                className="flex items-center justify-center nav-bar shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 px-8"
+                backgroundOpacity={0.5}
+                distortionScale={140}
+                blur={20}
+              >
+                <span className="text-base md:text-lg font-reg text-white whitespace-nowrap">
+                  About Me
+                </span>
+              </GlassSurface>
+            </button>
           </div>
         </div>
       </div>
@@ -205,7 +191,7 @@ export default function Home() {
       {/* About Me + Skills section */}
       <main
         id="next-section"
-        className="relative z-10 flex-1 flex flex-col items-start px-8 pt-16 pb-24"
+        className="relative z-10 flex-1 flex flex-col items-start px-4 md:px-8 pt-12 md:pt-16 pb-16 md:pb-24"
       >
         <div className="w-full max-w-2xl mx-auto flex flex-col gap-6">
 
@@ -319,13 +305,13 @@ export default function Home() {
 
       {/* Tech ticker — very bottom */}
       <div className="relative z-10 border-t border-white/5">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
         <LogoLoop
           logos={techLogos}
           speed={40}
           direction="left"
           pauseOnHover={true}
-          fadeOut={true}
-          fadeOutColor="#0a0a0a"
           logoHeight={22}
           gap={40}
           ariaLabel="Technologies I work with"

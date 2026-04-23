@@ -51,32 +51,27 @@ export default function ProjectsPage() {
       </div>
 
       {/* Navbar */}
-      <div style={{ position: "relative", zIndex: 1, display: "flex", justifyContent: "center", padding: "50px 0 0" }}>
-        <GlassSurface
-          width="45%"
-          height={70}
-          borderRadius={40}
-          opacity={0.8}
-          className="nav-bar"
-          backgroundOpacity={0.5}
-          distortionScale={140}
-          blur={20}
-        >
-          <div style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            height: "100%",
-            width: "100%",
-            padding: "0 40px",
-          }}>
-            <Navigation />
-          </div>
-        </GlassSurface>
+      <div className="relative z-10 flex justify-center px-4 pt-10 md:pt-[50px]">
+        <div className="w-full max-w-[92%] md:max-w-[45%]">
+          <GlassSurface
+            width="100%"
+            height={70}
+            borderRadius={40}
+            opacity={0.8}
+            className="nav-bar"
+            backgroundOpacity={0.5}
+            distortionScale={140}
+            blur={20}
+          >
+            <div className="flex justify-between items-center h-full w-full px-5 md:px-10">
+              <Navigation />
+            </div>
+          </GlassSurface>
+        </div>
       </div>
 
       {/* Page content */}
-      <main className="relative z-10 flex-1 flex flex-col items-center px-6 pt-20 pb-16">
+      <main className="relative z-10 flex-1 flex flex-col items-center px-4 md:px-6 pt-12 md:pt-20 pb-12 md:pb-16">
         <div className="w-full max-w-2xl">
 
           {/* Heading */}
@@ -90,7 +85,7 @@ export default function ProjectsPage() {
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
             }}
-            className="p-8 mb-6"
+            className="p-5 md:p-8 mb-6"
           >
             {/* Featured badge */}
             <div className="flex items-center gap-3 mb-5">
@@ -154,13 +149,13 @@ export default function ProjectsPage() {
 
       {/* Tech ticker — very bottom */}
       <div className="relative z-10 border-t border-white/5">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
         <LogoLoop
           logos={techLogos}
           speed={40}
           direction="left"
           pauseOnHover={true}
-          fadeOut={true}
-          fadeOutColor="#0a0a0a"
           logoHeight={22}
           gap={40}
           ariaLabel="Technologies I work with"
