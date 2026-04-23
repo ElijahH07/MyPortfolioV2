@@ -31,6 +31,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSkillTab, setActiveSkillTab] = useState<'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'>('all');
   const spotlightRef = useRef<HTMLDivElement>(null);
+  const [bioComplete, setBioComplete] = useState(false);
 
   type Skill = { name: string; icon?: React.ReactNode; category: 'languages' | 'frameworks' | 'tools' | 'concepts' };
 
@@ -200,7 +201,7 @@ export default function Home() {
       >
         <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
 
-          {/* About Me glass card */}
+          {/* About Me terminal card */}
           <div
             style={{
               background: "rgba(255,255,255,0.04)",
@@ -209,22 +210,39 @@ export default function Home() {
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
             }}
-            className="p-8"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <h2 className="text-4xl font-switzer-black text-white whitespace-nowrap">About Me</h2>
-              <div className="flex-1 h-px bg-white/10" />
+            {/* Terminal chrome bar */}
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.08] bg-white/[0.03] rounded-t-2xl">
+              <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+              <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+              <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+              <span className="ml-2 font-mono text-xs text-white/25 tracking-wide">~/portfolio/about.txt</span>
             </div>
-            <p className="text-xl text-gray-300 font-switzer-reg leading-relaxed">
-              Hello. I&apos;m <span className="text-white font-switzer-black">Elijah</span>, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.
-              <br /><br />
-              I love working on embedded systems, simulations, and web applications, whether that&apos;s writing firmware for a sensor board, modeling rocket dynamics in MATLAB, or creating a clean UI in React.
-              <br /><br />
-              Feel free to reach out at{' '}
-              <a href="mailto:ehargreaves@ucsb.edu" className="text-white underline underline-offset-4 hover:opacity-80 transition-opacity">
-                ehargreaves@ucsb.edu
-              </a>.
-            </p>
+            {/* Terminal body */}
+            <div className="p-5 font-mono">
+              <p className="text-sm text-white/30 mb-3">$ cat about.txt</p>
+              <TypingText
+                text={`Hello. I'm Elijah, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.\n\nI love working on embedded systems, simulations, and web applications — whether that's writing firmware for a sensor board, modeling rocket dynamics in MATLAB, or creating a clean UI in React.`}
+                grow={true}
+                repeat={false}
+                hideCursorOnComplete={true}
+                delay={20}
+                onComplete={() => setBioComplete(true)}
+                className="text-sm text-white/60 leading-relaxed whitespace-pre-wrap"
+              />
+              {bioComplete && (
+                <p className="font-mono text-sm text-white/60 leading-relaxed mt-4">
+                  {'Feel free to reach out at '}
+                  <a
+                    href="mailto:ehargreaves@ucsb.edu"
+                    className="text-white/80 underline underline-offset-4 hover:text-white transition-colors"
+                  >
+                    ehargreaves@ucsb.edu
+                  </a>
+                  .
+                </p>
+              )}
+            </div>
           </div>
 
           {/* My Skills glass card */}
