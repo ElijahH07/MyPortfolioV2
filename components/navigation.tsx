@@ -14,7 +14,7 @@ const Navigation: React.FC = () => {
     if (!mobileMenuOpen && hamburgerRef.current) {
       const rect = hamburgerRef.current.getBoundingClientRect();
       setDropdownPos({
-        top: rect.bottom + 10,
+        top: rect.bottom + 18,
         left: rect.left + rect.width / 2,
       });
     }
@@ -65,7 +65,7 @@ const Navigation: React.FC = () => {
           <a
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="animate-pop-in font-reg text-white/85 text-base px-7 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
+            className="animate-pop-in font-reg text-white/85 text-base w-32 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors text-center"
             style={{
               background: 'rgba(255,255,255,0.09)',
               border: '1px solid rgba(255,255,255,0.14)',
@@ -77,7 +77,7 @@ const Navigation: React.FC = () => {
           <a
             href="/projects"
             onClick={() => setMobileMenuOpen(false)}
-            className="animate-pop-in font-reg text-white/85 text-base px-7 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
+            className="animate-pop-in font-reg text-white/85 text-base w-32 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors text-center"
             style={{
               background: 'rgba(255,255,255,0.09)',
               border: '1px solid rgba(255,255,255,0.14)',
