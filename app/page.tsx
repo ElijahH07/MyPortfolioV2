@@ -13,15 +13,20 @@ import { FaJava } from 'react-icons/fa';
 import Footer from "@/components/footer"
 import Navigation from '@/components/navigation';
 
-const techLogos = [
-  { node: <span className="text-white"><SiReact /></span>, title: "React", href: "https://react.dev" },
-  { node: <span className="text-white"><SiNextdotjs /></span>, title: "Next.js", href: "https://nextjs.org" },
-  { node: <span className="text-white"><SiTypescript /></span>, title: "TypeScript", href: "https://www.typescriptlang.org" },
-  { node: <span className="text-white"><SiTailwindcss /></span>, title: "Tailwind CSS", href: "https://tailwindcss.com" },
-];
-
-
 export default function Home() {
+  const techLogos = [
+    { node: <span className="text-white/40 text-xl"><SiPython /></span>, title: "Python" },
+    { node: <span className="text-white/40 text-xl"><SiCplusplus /></span>, title: "C++" },
+    { node: <span className="text-white/40 text-xl"><SiJavascript /></span>, title: "JavaScript" },
+    { node: <span className="text-white/40 text-xl"><SiTypescript /></span>, title: "TypeScript" },
+    { node: <span className="text-white/40 text-xl"><SiReact /></span>, title: "React" },
+    { node: <span className="text-white/40 text-xl"><SiNextdotjs /></span>, title: "Next.js" },
+    { node: <span className="text-white/40 text-xl"><SiTailwindcss /></span>, title: "Tailwind CSS" },
+    { node: <span className="text-white/40 text-xl"><SiGit /></span>, title: "Git" },
+    { node: <span className="text-white/40 text-xl"><SiGithub /></span>, title: "GitHub" },
+    { node: <span className="text-white/40 text-xl"><SiLatex /></span>, title: "LaTeX" },
+    { node: <span className="text-white/40 text-xl"><FaJava /></span>, title: "Java" },
+  ];
 
   const [scrolled, setScrolled] = useState(false);
   const [activeSkillTab, setActiveSkillTab] = useState<'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'>('all');
@@ -168,6 +173,22 @@ export default function Home() {
             </span>
           </GlassSurface>
         </div>
+      </div>
+
+      {/* Tech ticker */}
+      <div className="relative z-10 border-y border-white/5">
+        <LogoLoop
+          logos={techLogos}
+          speed={40}
+          direction="left"
+          pauseOnHover={true}
+          fadeOut={true}
+          fadeOutColor="#0a0a0a"
+          logoHeight={22}
+          gap={40}
+          ariaLabel="Technologies I work with"
+          className="py-5"
+        />
       </div>
 
       {/* About Me + Skills section */}
