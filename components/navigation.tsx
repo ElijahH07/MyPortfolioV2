@@ -72,20 +72,20 @@ const Navigation: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown — fixed so it escapes the GlassSurface overflow */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-lg border-t border-white/10 shadow-lg">
-          <nav className="flex flex-col p-6 gap-4">
-            <a 
-              href="/" 
-              className="font-reg text-white text-xl hover:opacity-70 transition-opacity py-2"
+        <div className="md:hidden fixed top-[110px] inset-x-0 z-50 bg-black/95 backdrop-blur-lg border-t border-white/10 shadow-lg">
+          <nav className="flex flex-col px-8 py-4 gap-1">
+            <a
+              href="/"
+              className="font-reg text-white text-lg hover:opacity-70 transition-opacity py-3 border-b border-white/5"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </a>
-            <a 
-              href="/projects" 
-              className="font-reg text-white text-xl hover:opacity-70 transition-opacity py-2"
+            <a
+              href="/projects"
+              className="font-reg text-white text-lg hover:opacity-70 transition-opacity py-3"
               onClick={() => setMobileMenuOpen(false)}
             >
               Projects
