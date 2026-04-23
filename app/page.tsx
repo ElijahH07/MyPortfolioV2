@@ -245,7 +245,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* My Skills glass card */}
+          {/* Skills terminal card */}
           <div
             style={{
               background: "rgba(255,255,255,0.04)",
@@ -254,46 +254,53 @@ export default function Home() {
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
             }}
-            className="p-8"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <h2 className="text-4xl font-switzer-black text-white whitespace-nowrap">My Skills</h2>
-              <div className="flex-1 h-px bg-white/10" />
+            {/* Terminal chrome bar */}
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.08] bg-white/[0.03] rounded-t-2xl">
+              <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+              <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+              <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+              <span className="ml-2 font-mono text-xs text-white/25 tracking-wide">~/portfolio/skills.sh</span>
             </div>
-
-            {/* Filter tabs */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {(['all', 'languages', 'frameworks', 'tools', 'concepts'] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveSkillTab(tab)}
-                  aria-pressed={activeSkillTab === tab}
-                  className={`px-4 py-1.5 rounded-full text-sm font-switzer-black capitalize transition-all duration-200 ${
-                    activeSkillTab === tab
-                      ? 'bg-white text-black'
-                      : 'bg-white/5 text-white/60 border border-white/15 hover:bg-white/10 hover:text-white/80'
-                  }`}
-                >
-                  {tab === 'all' ? 'All' : tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </button>
-              ))}
-            </div>
-
-            {/* Skill pills */}
-            <div className="flex flex-wrap gap-3">
-              {skills
-                .filter((s) => activeSkillTab === 'all' || s.category === activeSkillTab)
-                .map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-white/80 font-switzer-reg text-sm hover:bg-white/10 hover:border-white/30 hover:text-white transition-all duration-200"
+            {/* Terminal body */}
+            <div className="p-5 font-mono">
+              {/* Command line row */}
+              <div className="flex flex-wrap items-center gap-2 mb-4">
+                <span className="text-sm text-white/30">$ ls skills/</span>
+                {[
+                  { id: 'all', label: '--all' },
+                  { id: 'languages', label: '--languages' },
+                  { id: 'frameworks', label: '--frameworks' },
+                  { id: 'tools', label: '--tools' },
+                  { id: 'concepts', label: '--concepts' },
+                ].map(({ id, label }) => (
+                  <button
+                    key={id}
+                    onClick={() => setActiveSkillTab(id as typeof activeSkillTab)}
+                    aria-pressed={activeSkillTab === id}
+                    className={`font-mono text-xs px-2 py-0.5 rounded border transition-all ${
+                      activeSkillTab === id
+                        ? 'bg-white/10 border-white/35 text-white/90'
+                        : 'border-white/10 bg-transparent text-white/35 hover:text-white/60 hover:border-white/25'
+                    }`}
                   >
-                    {skill.icon && (
-                      <span className="text-base leading-none">{skill.icon}</span>
-                    )}
-                    {skill.name}
-                  </div>
+                    {label}
+                  </button>
                 ))}
+              </div>
+              {/* Skill chips */}
+              <div className="flex flex-wrap gap-2">
+                {skills
+                  .filter(s => activeSkillTab === 'all' || s.category === activeSkillTab)
+                  .map(skill => (
+                    <span
+                      key={skill.name}
+                      className="font-mono text-xs px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white/55"
+                    >
+                      {skill.name}
+                    </span>
+                  ))}
+              </div>
             </div>
           </div>
 
