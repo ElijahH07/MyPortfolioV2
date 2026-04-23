@@ -50,23 +50,23 @@ const Navigation: React.FC = () => {
 
       {/* Mobile dropdown — portalled to body to escape backdrop-filter containing block */}
       {typeof document !== 'undefined' && mobileMenuOpen && createPortal(
-        <div className="fixed inset-x-0 top-[110px] z-[200] backdrop-blur-2xl border-b border-white/[0.08] shadow-xl" style={{ background: 'rgba(255,255,255,0.04)' }}>
-          <nav className="flex flex-col px-8 py-2">
-            <a
-              href="/"
-              className="font-reg text-white/80 text-base py-4 border-b border-white/[0.06] hover:text-white transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a
-              href="/projects"
-              className="font-reg text-white/80 text-base py-4 hover:text-white transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Projects
-            </a>
-          </nav>
+        <div className="fixed top-[118px] left-1/2 -translate-x-1/2 z-[200] flex flex-col items-center gap-2">
+          <a
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-reg text-white/80 text-base px-8 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
+            style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+          >
+            Home
+          </a>
+          <a
+            href="/projects"
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-reg text-white/80 text-base px-8 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
+            style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+          >
+            Projects
+          </a>
         </div>,
         document.body
       )}
