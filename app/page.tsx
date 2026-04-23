@@ -63,26 +63,26 @@ export default function Home() {
   };
 
   return (
-    <>
-      {/* main header */}
-      <div style={{ width: '100%', height: '800px', position: 'relative' }} className={` transition-opacity duration-1000 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
-        {/* Background layer - Beams */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-          <Beams
-            beamWidth={3}
-            beamHeight={20}
-            beamNumber={20}
-            lightColor="#ffffff"
-            speed={2}
-            noiseIntensity={1.75}
-            scale={0.2}
-            rotation={30}
-          />
-        </div>
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
+      {/* Fixed Beams background — covers entire page like the Projects page */}
+      <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
+        <Beams
+          beamWidth={3}
+          beamHeight={20}
+          beamNumber={20}
+          lightColor="#ffffff"
+          speed={2}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={30}
+        />
+      </div>
 
-        {/* Foreground layer - Navigation */}
-        <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'center', padding: '50px 0'  }}>
-          <GlassSurface 
+      {/* Hero section */}
+      <div style={{ width: '100%', height: '800px', position: 'relative', zIndex: 1 }} className={`transition-opacity duration-1000 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
+        {/* Navigation */}
+        <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'center', padding: '50px 0' }}>
+          <GlassSurface
             width="45%"
             height={70}
             borderRadius={40}
@@ -92,22 +92,20 @@ export default function Home() {
             distortionScale={140}
             blur={20}
           >
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
               alignItems: 'center',
               height: '100%',
               width: '100%',
               padding: '0 40px'
             }}>
-            
-            {/* Nav Bar */}
-            <Navigation></Navigation>
+              <Navigation></Navigation>
             </div>
           </GlassSurface>
         </div>
 
-        {/* Name and shi */}
+        {/* Name */}
         <div className="relative mt-30 flex flex-col items-center">
           <BrowserView>
             <h1 className="text-6xl md:text-8xl font-black text-white">
@@ -119,8 +117,8 @@ export default function Home() {
               Elijah<br />Hargreaves <br />
             </h1>
           </MobileView>
-          <TypingText 
-            text="Computer Engineer @ UCSB" 
+          <TypingText
+            text="Computer Engineer @ UCSB"
             className="text-2xl md:text-3xl font-reg bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-gray-500 pt-4"
             grow={true}
             repeat={false}
@@ -129,15 +127,15 @@ export default function Home() {
         </div>
 
         <div className="relative mt-6 flex justify-center gap-4">
-          <a 
-            target="_blank" 
-            href="https://flowcv.com/resume/k9rrshmuvuso" 
+          <a
+            target="_blank"
+            href="https://flowcv.com/resume/k9rrshmuvuso"
             className="flex items-center justify-center bg-white rounded-[40px] min-w-[200px] h-[55px] px-6 text-lg font-semibold text-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer"
           >
             <span className="text-lg md:text-xl font-reg text-black whitespace-nowrap">Resume</span>
           </a>
-          
-          <GlassSurface 
+
+          <GlassSurface
             width="200px"
             height={55}
             borderRadius={40}
@@ -147,8 +145,8 @@ export default function Home() {
             distortionScale={140}
             blur={20}
           >
-            <span 
-              onClick={scrollToNextSection} 
+            <span
+              onClick={scrollToNextSection}
               className="text-lg md:text-xl font-reg text-white whitespace-nowrap"
             >
               About Me
@@ -157,15 +155,27 @@ export default function Home() {
         </div>
       </div>
 
-      {/* About me / Skills section*/}
-        <div
-          id="next-section"
-          className={`center-div max-w-[50%] flex flex-col items-center justify-center min-h-screen pb-24 transition-opacity duration-1000 overflow-hidden ${
-            scrolled ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <div className="relative px-6">
-            <div className="flex items-center gap-4 mb-8 mt-4">
+      {/* About Me + Skills section */}
+      <main
+        id="next-section"
+        className={`relative z-10 flex-1 flex flex-col items-start px-8 pt-16 pb-24 transition-opacity duration-1000 ${
+          scrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
+
+          {/* About Me glass card */}
+          <div
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "16px",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+            }}
+            className="p-8"
+          >
+            <div className="flex items-center gap-4 mb-8">
               <h2 className="text-4xl font-switzer-black text-white whitespace-nowrap">About Me</h2>
               <div className="flex-1 h-px bg-white/10" />
             </div>
@@ -179,9 +189,19 @@ export default function Home() {
                 ehargreaves@ucsb.edu
               </a>.
             </p>
+          </div>
 
-            <div className="section-divider my-16"></div>
-
+          {/* My Skills glass card */}
+          <div
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "16px",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+            }}
+            className="p-8"
+          >
             <div className="flex items-center gap-4 mb-6">
               <h2 className="text-4xl font-switzer-black text-white whitespace-nowrap">My Skills</h2>
               <div className="flex-1 h-px bg-white/10" />
@@ -222,8 +242,13 @@ export default function Home() {
                 ))}
             </div>
           </div>
+
         </div>
+      </main>
+
+      <div className="relative z-10">
         <Footer onAboutClick={scrollToNextSection}></Footer>
-    </>
+      </div>
+    </div>
   );
 }
