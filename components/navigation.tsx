@@ -1,28 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import IconButton from './iconButton';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
 
 const Navigation: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0 });
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+
+  const handleToggle = useCallback(() => {
+    if (!mobileMenuOpen && hamburgerRef.current) {
+      const rect = hamburgerRef.current.getBoundingClientRect();
+      setDropdownPos({
+        top: rect.bottom + 10,
+        left: rect.left + rect.width / 2,
+      });
+    }
+    setMobileMenuOpen(prev => !prev);
+  }, [mobileMenuOpen]);
 
   return (
     <>
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center justify-between w-full">
         <nav className="flex gap-8">
-          <a
-            href="/"
-            className="font-reg text-white text-base tracking-wide hover:opacity-70 transition-opacity duration-200"
-          >
+          <a href="/" className="font-reg text-white text-base tracking-wide hover:opacity-70 transition-opacity duration-200">
             Home
           </a>
-          <a
-            href="/projects"
-            className="font-reg text-white text-base tracking-wide hover:opacity-70 transition-opacity duration-200"
-          >
+          <a href="/projects" className="font-reg text-white text-base tracking-wide hover:opacity-70 transition-opacity duration-200">
             Projects
           </a>
         </nav>
@@ -32,10 +39,11 @@ const Navigation: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation bar */}
+      {/* Mobile nav bar */}
       <div className="flex md:hidden items-center justify-between w-full">
         <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          ref={hamburgerRef}
+          onClick={handleToggle}
           className="text-white p-2 hover:opacity-80 transition-opacity"
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
@@ -48,22 +56,33 @@ const Navigation: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile dropdown — portalled to body to escape backdrop-filter containing block */}
+      {/* Dropdown — portalled to escape backdrop-filter, anchored to hamburger button */}
       {typeof document !== 'undefined' && mobileMenuOpen && createPortal(
-        <div className="fixed top-[118px] left-1/2 -translate-x-1/2 z-[200] flex flex-col items-center gap-2">
+        <div
+          className="fixed z-[200] flex flex-col items-center gap-2"
+          style={{ top: dropdownPos.top, left: dropdownPos.left, transform: 'translateX(-50%)' }}
+        >
           <a
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="font-reg text-white/80 text-base px-8 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
-            style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+            className="animate-pop-in font-reg text-white/85 text-base px-7 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
+            style={{
+              background: 'rgba(255,255,255,0.09)',
+              border: '1px solid rgba(255,255,255,0.14)',
+              animationDelay: '0ms',
+            }}
           >
             Home
           </a>
           <a
             href="/projects"
             onClick={() => setMobileMenuOpen(false)}
-            className="font-reg text-white/80 text-base px-8 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
-            style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+            className="animate-pop-in font-reg text-white/85 text-base px-7 py-2.5 rounded-full backdrop-blur-2xl hover:text-white transition-colors"
+            style={{
+              background: 'rgba(255,255,255,0.09)',
+              border: '1px solid rgba(255,255,255,0.14)',
+              animationDelay: '60ms',
+            }}
           >
             Projects
           </a>

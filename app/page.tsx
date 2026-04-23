@@ -218,7 +218,7 @@ export default function Home() {
             <div className="p-5 font-mono">
               <p className="text-sm text-white/30 mb-3">$ cat about.txt</p>
               <TypingText
-                text={`Hello. I'm Elijah, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.\n\nI love working on embedded systems, simulations, and web applications, whether that's writing c for an ESP32, modeling rocket dynamics in MATLAB, or creating a clean UI in React.`}
+                text={`Hello. I'm Elijah, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.\n\nI love working on embedded systems, simulations, and web applications, whether that's writing c++ for an ESP32, modeling rocket dynamics in MATLAB, or creating a clean UI in React.`}
                 grow={true}
                 repeat={false}
                 hideCursorOnComplete={true}
