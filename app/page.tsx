@@ -1,11 +1,8 @@
 "use client"
 import Beams from '@/components/beams';
 import GlassSurface from '@/components/glasssurface';
-import ColorBends from '@/components/colorBends';
 import TypingText from '@/components/typing-text';
 import { BrowserView, MobileView } from "react-device-detect";
-import IconButton from '@/components/iconButton';
-import { ChevronDown, Github, Linkedin } from 'lucide-react';
 import {useState, useEffect, useRef} from "react";
 import LogoLoop from '@/components/LogoLoop';
 import { SiPython, SiCplusplus, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss, SiGit, SiGithub, SiLatex } from 'react-icons/si';
@@ -13,21 +10,21 @@ import { FaJava } from 'react-icons/fa';
 import Footer from "@/components/footer"
 import Navigation from '@/components/navigation';
 
-type Skill = { name: string; icon?: React.ReactNode; category: 'languages' | 'frameworks' | 'tools' | 'concepts' };
+type Skill = { name: string; category: 'languages' | 'frameworks' | 'tools' | 'concepts' };
 
 const skills: Skill[] = [
-  { name: 'Python', icon: <SiPython />, category: 'languages' },
-  { name: 'C++', icon: <SiCplusplus />, category: 'languages' },
-  { name: 'JavaScript', icon: <SiJavascript />, category: 'languages' },
-  { name: 'TypeScript', icon: <SiTypescript />, category: 'languages' },
+  { name: 'Python', category: 'languages' },
+  { name: 'C++', category: 'languages' },
+  { name: 'JavaScript', category: 'languages' },
+  { name: 'TypeScript', category: 'languages' },
   { name: 'MATLAB', category: 'languages' },
-  { name: 'Java', icon: <FaJava />, category: 'languages' },
-  { name: 'React', icon: <SiReact />, category: 'frameworks' },
-  { name: 'Next.js', icon: <SiNextdotjs />, category: 'frameworks' },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss />, category: 'frameworks' },
-  { name: 'Git', icon: <SiGit />, category: 'tools' },
-  { name: 'GitHub', icon: <SiGithub />, category: 'tools' },
-  { name: 'LaTeX', icon: <SiLatex />, category: 'tools' },
+  { name: 'Java', category: 'languages' },
+  { name: 'React', category: 'frameworks' },
+  { name: 'Next.js', category: 'frameworks' },
+  { name: 'Tailwind CSS', category: 'frameworks' },
+  { name: 'Git', category: 'tools' },
+  { name: 'GitHub', category: 'tools' },
+  { name: 'LaTeX', category: 'tools' },
   { name: 'Object-Oriented Programming', category: 'concepts' },
 ];
 
