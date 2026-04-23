@@ -50,7 +50,7 @@ const Navigation: React.FC = () => {
 
       {/* Mobile dropdown — portalled to body to escape backdrop-filter containing block */}
       {typeof document !== 'undefined' && mobileMenuOpen && createPortal(
-        <div className="fixed inset-x-0 top-[110px] z-[200] bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/10 shadow-xl">
+        <div className="fixed inset-x-0 top-[110px] z-[200] backdrop-blur-2xl border-b border-white/[0.08] shadow-xl" style={{ background: 'rgba(255,255,255,0.04)' }}>
           <nav className="flex flex-col px-8 py-2">
             <a
               href="/"

@@ -123,9 +123,9 @@ export default function Home() {
       </div>
 
       {/* Hero section */}
-      <div className={`w-full min-h-screen md:h-[800px] relative z-10 transition-opacity duration-1000 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`w-full min-h-screen md:h-[800px] relative z-10 flex flex-col transition-opacity duration-1000 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
         {/* Navigation */}
-        <div className="relative z-10 flex justify-center px-4 pt-10 md:pt-[50px]">
+        <div className="flex justify-center px-4 pt-10 md:pt-[50px]">
           <div className="w-full max-w-[92%] md:max-w-[45%]">
             <GlassSurface
               width="100%"
@@ -144,8 +144,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Name + subtitle + buttons */}
-        <div className="relative mt-14 md:mt-24 flex flex-col items-center gap-6 px-4">
+        {/* Name + subtitle + buttons — vertically centered in remaining space */}
+        <div className="flex-1 flex flex-col items-center justify-center gap-6 px-4 pb-16">
           <div className="flex flex-col items-center gap-3 text-center w-full">
             <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-tight text-center">
               Elijah Hargreaves
