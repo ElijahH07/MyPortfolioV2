@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next"
 
 export const switzerBlack = localFont({
   src: "../public/fonts/Switzer-Black.woff2",
