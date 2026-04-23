@@ -6,7 +6,7 @@ import TypingText from '@/components/typing-text';
 import { BrowserView, MobileView } from "react-device-detect";
 import IconButton from '@/components/iconButton';
 import { ChevronDown, Github, Linkedin } from 'lucide-react';
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import LogoLoop from '@/components/LogoLoop';
 import { SiPython, SiCplusplus, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss, SiGit, SiGithub, SiLatex } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
@@ -25,6 +25,7 @@ export default function Home() {
 
   const [scrolled, setScrolled] = useState(false);
   const [activeSkillTab, setActiveSkillTab] = useState<'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'>('all');
+  const spotlightRef = useRef<HTMLDivElement>(null);
 
   type Skill = { name: string; icon?: React.ReactNode; category: 'languages' | 'frameworks' | 'tools' | 'concepts' };
 
@@ -52,9 +53,18 @@ export default function Home() {
         setScrolled(false);
       }
     };
+    const handleMouseMove = (e: MouseEvent) => {
+      if (spotlightRef.current) {
+        spotlightRef.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.04), transparent 80%)`;
+      }
+    };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const scrollToNextSection = () => {
@@ -64,6 +74,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
+      {/* Cursor spotlight */}
+      <div
+        ref={spotlightRef}
+        className="pointer-events-none fixed inset-0 z-30"
+      />
       {/* Fixed Beams background — covers entire page like the Projects page */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <Beams
