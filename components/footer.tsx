@@ -16,6 +16,15 @@ const Footer: React.FC<FooterProps> = () => {
         <p className="font-reg text-sm text-white/30">© {currentYear} Elijah Hargreaves</p>
         <div className="flex items-center gap-5">
           <a
+            href="https://github.com/ElijahH07/myportfoliov2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-reg text-xs text-white/25 hover:text-white/60 transition-colors tracking-wide"
+          >
+            source
+          </a>
+          <span className="text-white/10 text-xs">|</span>
+          <a
             href="https://github.com/ElijahH07"
             target="_blank"
             rel="noopener noreferrer"

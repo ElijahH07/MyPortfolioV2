@@ -313,8 +313,12 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Tech ticker — divider between content and footer */}
-      <div className="relative z-10 border-b border-white/5">
+      <div className="relative z-10">
+        <Footer onAboutClick={scrollToNextSection}></Footer>
+      </div>
+
+      {/* Tech ticker — very bottom */}
+      <div className="relative z-10 border-t border-white/5">
         <LogoLoop
           logos={techLogos}
           speed={40}
@@ -325,12 +329,8 @@ export default function Home() {
           logoHeight={22}
           gap={40}
           ariaLabel="Technologies I work with"
-          className="py-5"
+          className="py-4"
         />
-      </div>
-
-      <div className="relative z-10">
-        <Footer onAboutClick={scrollToNextSection}></Footer>
       </div>
     </div>
   );

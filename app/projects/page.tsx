@@ -147,7 +147,13 @@ export default function ProjectsPage() {
       </main>
 
       {/* Tech ticker — divider between content and footer */}
-      <div className="relative z-10 border-b border-white/5">
+      {/* Footer */}
+      <div className="relative z-10">
+        <Footer />
+      </div>
+
+      {/* Tech ticker — very bottom */}
+      <div className="relative z-10 border-t border-white/5">
         <LogoLoop
           logos={techLogos}
           speed={40}
@@ -158,13 +164,8 @@ export default function ProjectsPage() {
           logoHeight={22}
           gap={40}
           ariaLabel="Technologies I work with"
-          className="py-5"
+          className="py-4"
         />
-      </div>
-
-      {/* Footer */}
-      <div className="relative z-10">
-        <Footer />
       </div>
     </div>
   );
