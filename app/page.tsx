@@ -146,8 +146,8 @@ export default function Home() {
 
         {/* Name + subtitle + buttons */}
         <div className="relative mt-14 md:mt-24 flex flex-col items-center gap-6 px-4">
-          <div className="flex flex-col items-center gap-3 text-center">
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-tight">
+          <div className="flex flex-col items-center gap-3 text-center w-full">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-tight text-center">
               Elijah Hargreaves
             </h1>
             <TypingText
@@ -159,27 +159,27 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-xs sm:max-w-none">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               target="_blank"
               href="https://flowcv.com/resume/k9rrshmuvuso"
-              className="flex items-center justify-center bg-white rounded-[40px] h-[52px] px-8 font-semibold text-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center bg-white rounded-[40px] h-[50px] px-10 font-semibold text-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 cursor-pointer"
             >
-              <span className="text-base md:text-lg font-reg text-black whitespace-nowrap">Resume</span>
+              <span className="text-base font-reg text-black whitespace-nowrap">Resume</span>
             </a>
 
             <button onClick={scrollToNextSection} className="cursor-pointer">
               <GlassSurface
-                width="100%"
-                height={52}
+                width="160px"
+                height={50}
                 borderRadius={40}
                 opacity={0.8}
-                className="flex items-center justify-center nav-bar shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 px-8"
+                className="flex items-center justify-center nav-bar shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300"
                 backgroundOpacity={0.5}
                 distortionScale={140}
                 blur={20}
               >
-                <span className="text-base md:text-lg font-reg text-white whitespace-nowrap">
+                <span className="text-base font-reg text-white whitespace-nowrap">
                   About Me
                 </span>
               </GlassSurface>
