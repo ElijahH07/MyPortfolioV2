@@ -147,7 +147,7 @@ export default function ProjectsPage() {
         <Footer />
       </div>
 
-      {/* Tech ticker — very bottom */}
+      {/* Tech ticker — very bottom
       <div className="relative z-10 border-t border-white/5">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
@@ -160,8 +160,8 @@ export default function ProjectsPage() {
           gap={40}
           ariaLabel="Technologies I work with"
           className="py-4"
-        />
-      </div>
+        /> 
+      </div> */}
     </div>
   );
 }
