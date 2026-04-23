@@ -19,13 +19,13 @@ const Navigation: React.FC = () => {
         <nav className="flex gap-8">
           <a 
             href="/" 
-            className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-all duration-200"
+            className="font-reg text-white text-base tracking-wide hover:opacity-70 transition-opacity duration-200"
           >
             Home
           </a>
           <a 
             href="/projects" 
-            className="font-black text-white text-lg hover:opacity-80 hover:scale-105 transition-all duration-200"
+            className="font-reg text-white text-base tracking-wide hover:opacity-70 transition-opacity duration-200"
           >
             Projects
           </a>
@@ -78,14 +78,14 @@ const Navigation: React.FC = () => {
           <nav className="flex flex-col p-6 gap-4">
             <a 
               href="/" 
-              className="font-black text-white text-xl hover:opacity-80 transition-opacity py-2"
+              className="font-reg text-white text-xl hover:opacity-70 transition-opacity py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </a>
             <a 
               href="/projects" 
-              className="font-black text-white text-xl hover:opacity-80 transition-opacity py-2"
+              className="font-reg text-white text-xl hover:opacity-70 transition-opacity py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Projects

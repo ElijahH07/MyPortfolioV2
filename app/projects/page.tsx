@@ -4,8 +4,25 @@ import Beams from "@/components/beams";
 import GlassSurface from "@/components/glasssurface";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import LogoLoop from "@/components/LogoLoop";
 import { BrowserView, MobileView } from "react-device-detect";
 import { Github } from "lucide-react";
+import { SiPython, SiCplusplus, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss, SiGit, SiGithub, SiLatex } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+
+const techLogos = [
+  { node: <span className="text-white/40 text-xl"><SiPython /></span>, title: "Python" },
+  { node: <span className="text-white/40 text-xl"><SiCplusplus /></span>, title: "C++" },
+  { node: <span className="text-white/40 text-xl"><SiJavascript /></span>, title: "JavaScript" },
+  { node: <span className="text-white/40 text-xl"><SiTypescript /></span>, title: "TypeScript" },
+  { node: <span className="text-white/40 text-xl"><SiReact /></span>, title: "React" },
+  { node: <span className="text-white/40 text-xl"><SiNextdotjs /></span>, title: "Next.js" },
+  { node: <span className="text-white/40 text-xl"><SiTailwindcss /></span>, title: "Tailwind CSS" },
+  { node: <span className="text-white/40 text-xl"><SiGit /></span>, title: "Git" },
+  { node: <span className="text-white/40 text-xl"><SiGithub /></span>, title: "GitHub" },
+  { node: <span className="text-white/40 text-xl"><SiLatex /></span>, title: "LaTeX" },
+  { node: <span className="text-white/40 text-xl"><FaJava /></span>, title: "Java" },
+];
 
 const tellurisProject = {
   title: "Telluris Landing Simulation",
@@ -140,6 +157,22 @@ export default function ProjectsPage() {
           </div>
         </div>
       </main>
+
+      {/* Tech ticker — divider between content and footer */}
+      <div className="relative z-10 border-b border-white/5">
+        <LogoLoop
+          logos={techLogos}
+          speed={40}
+          direction="left"
+          pauseOnHover={true}
+          fadeOut={true}
+          fadeOutColor="#0a0a0a"
+          logoHeight={22}
+          gap={40}
+          ariaLabel="Technologies I work with"
+          className="py-5"
+        />
+      </div>
 
       {/* Footer */}
       <div className="relative z-10">

@@ -150,28 +150,29 @@ export default function Home() {
           </GlassSurface>
         </div>
 
-        {/* Name */}
-        <div className="relative mt-30 flex flex-col items-center">
-          <BrowserView>
-            <h1 className="text-6xl md:text-8xl font-black text-white">
-              Elijah Hargreaves
-            </h1>
-          </BrowserView>
-          <MobileView>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white text-center leading-tight">
-              Elijah<br />Hargreaves <br />
-            </h1>
-          </MobileView>
-          <TypingText
-            text="Computer Engineer @ UCSB"
-            className="text-2xl md:text-3xl font-reg bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-gray-500 pt-4"
-            grow={true}
-            repeat={false}
-            hideCursorOnComplete={true}
-          />
-        </div>
+        {/* Name + subtitle + buttons — vertically centered block */}
+        <div className="relative mt-24 flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-3">
+            <BrowserView>
+              <h1 className="text-6xl md:text-8xl font-black text-white">
+                Elijah Hargreaves
+              </h1>
+            </BrowserView>
+            <MobileView>
+              <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white text-center leading-tight">
+                Elijah<br />Hargreaves
+              </h1>
+            </MobileView>
+            <TypingText
+              text="Computer Engineer @ UCSB"
+              className="text-2xl md:text-3xl font-reg bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-gray-500"
+              grow={true}
+              repeat={false}
+              hideCursorOnComplete={true}
+            />
+          </div>
 
-        <div className="relative mt-6 flex justify-center gap-4">
+          <div className="flex justify-center gap-4">
           <a
             target="_blank"
             href="https://flowcv.com/resume/k9rrshmuvuso"
@@ -197,23 +198,8 @@ export default function Home() {
               About Me
             </span>
           </GlassSurface>
+          </div>
         </div>
-      </div>
-
-      {/* Tech ticker */}
-      <div className="relative z-10 border-y border-white/5">
-        <LogoLoop
-          logos={techLogos}
-          speed={40}
-          direction="left"
-          pauseOnHover={true}
-          fadeOut={true}
-          fadeOutColor="#0a0a0a"
-          logoHeight={22}
-          gap={40}
-          ariaLabel="Technologies I work with"
-          className="py-5"
-        />
       </div>
 
       {/* About Me + Skills section */}
@@ -221,7 +207,7 @@ export default function Home() {
         id="next-section"
         className="relative z-10 flex-1 flex flex-col items-start px-8 pt-16 pb-24"
       >
-        <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
+        <div className="w-full max-w-2xl mx-auto flex flex-col gap-6">
 
           {/* About Me terminal card */}
           <div
@@ -246,7 +232,7 @@ export default function Home() {
             <div className="p-5 font-mono">
               <p className="text-sm text-white/30 mb-3">$ cat about.txt</p>
               <TypingText
-                text={`Hello. I'm Elijah, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.\n\nI love working on embedded systems, simulations, and web applications — whether that's writing firmware for a sensor board, modeling rocket dynamics in MATLAB, or creating a clean UI in React.`}
+                text={`Hello. I'm Elijah, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.\n\nI love working on embedded systems, simulations, and web applications, whether that's writing c for an ESP32, modeling rocket dynamics in MATLAB, or creating a clean UI in React.`}
                 grow={true}
                 repeat={false}
                 hideCursorOnComplete={true}
@@ -326,6 +312,22 @@ export default function Home() {
 
         </div>
       </main>
+
+      {/* Tech ticker — divider between content and footer */}
+      <div className="relative z-10 border-b border-white/5">
+        <LogoLoop
+          logos={techLogos}
+          speed={40}
+          direction="left"
+          pauseOnHover={true}
+          fadeOut={true}
+          fadeOutColor="#0a0a0a"
+          logoHeight={22}
+          gap={40}
+          ariaLabel="Technologies I work with"
+          className="py-5"
+        />
+      </div>
 
       <div className="relative z-10">
         <Footer onAboutClick={scrollToNextSection}></Footer>
