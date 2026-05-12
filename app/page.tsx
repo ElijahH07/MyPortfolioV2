@@ -53,7 +53,6 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSkillTab, setActiveSkillTab] = useState<'all' | 'languages' | 'frameworks' | 'tools' | 'concepts'>('all');
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const [bioComplete, setBioComplete] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const [aboutVisible, setAboutVisible] = useState(false);
@@ -125,7 +124,7 @@ export default function Home() {
       {/* Hero section */}
       <div className={`w-full min-h-screen md:h-[800px] relative z-10 flex flex-col transition-opacity duration-1000 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
         {/* Navigation */}
-        <div className="flex justify-center px-4 pt-10 md:pt-[50px]">
+        <div className="flex justify-center px-4 pt-4 md:pt-6">
           <div className="w-full max-w-[92%] md:max-w-[45%]">
             <GlassSurface
               width="100%"
@@ -145,7 +144,7 @@ export default function Home() {
         </div>
 
         {/* Name + subtitle + buttons — vertically centered in remaining space */}
-        <div className="flex-1 flex flex-col items-center justify-center gap-6 px-4 pb-16">
+        <div className="flex-1 flex flex-col items-center justify-center gap-6 px-4">
           <div className="flex flex-col items-center gap-3 text-center w-full">
             <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-tight text-center">
               Elijah Hargreaves
@@ -217,27 +216,19 @@ export default function Home() {
             {/* Terminal body */}
             <div className="p-5 font-mono">
               <p className="text-sm text-white/30 mb-3">$ cat about.txt</p>
-              <TypingText
-                text={`Hello. I'm Elijah, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.\n\nI love working on embedded systems, simulations, and web applications, whether that's writing c++ for an ESP32, modeling rocket dynamics in MATLAB, or creating a clean UI in React.`}
-                grow={true}
-                repeat={false}
-                hideCursorOnComplete={true}
-                delay={20}
-                onComplete={() => setBioComplete(true)}
-                className="text-sm text-white/60 leading-relaxed whitespace-pre-wrap"
-              />
-              {bioComplete && (
-                <p className="font-mono text-sm text-white/60 leading-relaxed mt-4">
-                  {'Feel free to reach out at '}
-                  <a
-                    href="mailto:ehargreaves@ucsb.edu"
-                    className="text-white/80 underline underline-offset-4 hover:text-white transition-colors"
-                  >
-                    ehargreaves@ucsb.edu
-                  </a>
-                  .
-                </p>
-              )}
+              <p className="text-sm text-white/60 leading-relaxed whitespace-pre-wrap">
+                {`Hello. I'm Elijah, a Computer Engineering student at UC Santa Barbara with a passion for building things at the intersection of hardware and software.\n\nI love working on embedded systems, simulations, and web applications, whether that's writing c++ for an ESP32, modeling rocket dynamics in MATLAB, or creating a clean UI in React.`}
+              </p>
+              <p className="font-mono text-sm text-white/60 leading-relaxed mt-4">
+                {'Feel free to reach out at '}
+                <a
+                  href="mailto:ehargreaves@ucsb.edu"
+                  className="text-white/80 underline underline-offset-4 hover:text-white transition-colors"
+                >
+                  ehargreaves@ucsb.edu
+                </a>
+                .
+              </p>
             </div>
           </div>
 
