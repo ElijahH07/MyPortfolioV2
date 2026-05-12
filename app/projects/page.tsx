@@ -296,9 +296,20 @@ servoY.write(servo[1]);`}</code>
         </div>
       </section>
 
-      {/* Section 3: Fullscreen Video */}
-      <section className="relative z-10 min-h-screen md:h-screen md:snap-start flex items-center justify-center overflow-hidden">
-        <p className="text-white/50 text-center">Video placeholder</p>
+      {/* Section 3: Fullscreen Static Fire Video */}
+      <section className="relative z-10 h-screen md:snap-start overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/projects/static_fire.MOV" type="video/quicktime" />
+          <source src="/projects/static_fire.MOV" type="video/mp4" />
+        </video>
+        {/* Subtle gradient overlays for polish */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/40 via-transparent to-[#0a0a0a]/60" />
       </section>
 
       {/* Footer */}
