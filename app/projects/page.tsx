@@ -70,8 +70,106 @@ export default function ProjectsPage() {
         ref={section1Ref}
         className="relative z-10 min-h-screen md:h-screen md:snap-start flex items-center justify-center px-6 md:px-12"
       >
-        <div className="w-full max-w-5xl">
-          <p className="text-white/50 text-center">Section 1 placeholder</p>
+        <div className="w-full max-w-5xl flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          {/* Text block — slides from left */}
+          <div
+            className={`flex-1 transition-all duration-700 ${
+              section1Visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+          >
+            <p className="text-sm font-switzer-reg text-white/50 mb-1">Gaucho Rocket Project</p>
+            <h2 className="text-3xl md:text-4xl font-switzer-black text-white mb-4">
+              Telluris Landing Simulation
+            </h2>
+            <p className="text-base font-switzer-reg text-gray-300 leading-relaxed mb-6">
+              A rocket landing trajectory and control simulation built in MATLAB.
+              Uses <code className="text-white/70">fminbnd</code> optimization to find the ideal second-stage
+              engine ignition time, then simulates the full descent with thrust modeling
+              and Newton&apos;s second law integration.
+            </p>
+            <div
+              className={`flex flex-wrap gap-2 mb-6 transition-all duration-700 delay-200 ${
+                section1Visible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-8"
+              }`}
+            >
+              {["MATLAB", "Simulink", "Control Systems", "Physics", "6-DOF"].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 rounded-full text-xs font-switzer-reg text-white/70 bg-white/5 border border-white/10"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <a
+              href="https://github.com/Gaucho-Rocket-Project/TellurisLandingSimulation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-switzer-black hover:bg-white/90 active:scale-95 transition-all duration-700 delay-300 ${
+                section1Visible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-8"
+              }`}
+            >
+              <Github size={16} />
+              View on GitHub
+            </a>
+          </div>
+
+          {/* Code snippet — slides from right */}
+          <div
+            className={`flex-1 w-full transition-all duration-700 delay-150 ${
+              section1Visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-8"
+            }`}
+          >
+            <div
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: "16px",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+              }}
+            >
+              {/* Terminal chrome */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.08] bg-white/[0.03] rounded-t-2xl">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="ml-2 font-mono text-xs text-white/25 tracking-wide">findSecondStageStart.m</span>
+              </div>
+              {/* Code body */}
+              <div className="p-4 md:p-5 font-mono text-xs md:text-sm leading-relaxed overflow-x-auto">
+                <pre className="text-white/60">
+                  <code>{`% Physics simulation — Newton's 2nd law
+% positive is downward
+for i = 1:length(t)-1
+    if h(i) <= 0
+        break;
+    end
+
+    % Thrust profile: initial burst then sustain
+    if (t(i) > startTime && t(i) < startTime + 0.5)
+        F_rocketPulse(i) = 22.0;  % max thrust (N)
+    elseif (t(i) > startTime && ...
+            t(i) < startTime + totalBurnTime)
+        F_rocketPulse(i) = 17.0;  % sustained (N)
+    end
+
+    a(i) = g - F_rocketPulse(i)/m;
+    v(i+1) = v(i) + a(i) * dt;
+    h(i+1) = h(i) - v(i)*dt - 0.5*a(i)*dt^2;
+end`}</code>
+                </pre>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
